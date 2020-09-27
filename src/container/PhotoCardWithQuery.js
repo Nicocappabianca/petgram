@@ -1,10 +1,12 @@
 import React from 'react'
 import { PhotoCard } from '../components/PhotoCard'
+import { LoaderContainer } from '../components/ListOfCategories/styles'
+import { Loading } from '../components/Loading'
 
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 
-const query = gql`
+const GET_SINGLE_PHOTO = gql`
 query getSinglePhoto($id:ID!) {
     photo(id:$id) {
       id
@@ -17,13 +19,20 @@ query getSinglePhoto($id:ID!) {
   }
 `
 
+const renderProp = ({ loading, error, data = { photo: {} } }) => {
+    if(loading){
+        return(
+            <LoaderContainer> 
+                <Loading type="balls" color="#a558ac"/>
+            </LoaderContainer>
+        )
+    }
+    const { photo = {} } = data
+    return <PhotoCard {...photo} />
+}
+
 export const PhotoCardWithQuery = ({ id }) => (
-    <Query query={query} variables={{ id }}>
-        {
-            ({ loading, error, data = { photo: {} } }) => {
-                const { photo = {} } = data
-                return <PhotoCard {...photo} />
-            }
-        }
+    <Query query={GET_SINGLE_PHOTO} variables={{ id }}>
+        {renderProp}
     </Query>
 )
