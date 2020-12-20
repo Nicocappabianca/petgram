@@ -1,9 +1,10 @@
 import * as React from "react"
 import { Svg } from './styles'
+import { Link } from '@reach/router'
 
 function Logo(props) {
   return (
-    <a href="/">
+    <Link to="/">
       <Svg
         width={309.744}
         height={138.83}
@@ -34,7 +35,7 @@ function Logo(props) {
         />
         <style />
       </Svg>
-    </a>
+    </Link>
   )
 }
 
