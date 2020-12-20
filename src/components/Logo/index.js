@@ -2,7 +2,7 @@ import * as React from "react"
 import { Svg } from './styles'
 import { Link } from '@reach/router'
 
-function Logo(props) {
+export const Logo = (props) => {
   return (
     <Link to="/">
       <Svg
@@ -38,5 +38,3 @@ function Logo(props) {
     </Link>
   )
 }
-
-export default Logo
