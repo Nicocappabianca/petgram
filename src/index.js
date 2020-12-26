@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {App} from './App'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import Context from './Context'
 
 const client = new ApolloClient({
     uri: 'https://petgram-api-nico.vercel.app/graphql'
@@ -10,8 +11,10 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-    <ApolloProvider client={client}>
-        <App />
-    </ApolloProvider>, 
+    <Context.Provider>
+        <ApolloProvider client={client}>
+            <App />
+        </ApolloProvider>
+    </Context.Provider>, 
     document.getElementById('app')
 )
