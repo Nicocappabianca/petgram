@@ -1,49 +1,77 @@
-import React from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import Context from '../Context'
 import { UserForm } from '../components/UserForm'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 
-export const NotRegisteredUser = () => (
-  <Context.Consumer>
-    {
-      ({ activateAuth }) => { 
-        return(
-          <>
-            <RegisterMutation>
-              { 
-                (register, { data, loading, error }) => { 
-                  const onSubmit = ({ email, password }) => {
-                    const input = { email, password } 
-                    const variables = { input }
-                    register({ variables }).then(activateAuth)
-                  }
+export const NotRegisteredUser = () => {
+  const [register, setRegister] = useState(true); 
 
-                  const errorMsg = error && 'Ocurrió un error.'
+  const Text = styled.p`
+    text-align: center; 
+    margin-top: 25px; 
+    font-size: 15px; 
 
-                  return <UserForm onSubmit={onSubmit} disabled={loading} error={errorMsg} title="Registrarse" />
-                }
-              }
-            </RegisterMutation>
-
-            <LoginMutation>
-              { 
-                (login, { data, loading, error }) => { 
-                  const onSubmit = ({ email, password }) => {
-                    const input = { email, password } 
-                    const variables = { input }
-                    login({ variables }).then(activateAuth)
-                  }
-
-                  const errorMsg = error && 'Ocurrió un error.'
-
-                  return <UserForm onSubmit={onSubmit} disabled={loading} error={errorMsg} title="Iniciar Sesión" />
-                }
-              }
-            </LoginMutation>
-          </>
-        )
-      } 
+    span { 
+      color: #8d00ff; 
+      cursor: pointer; 
     }
-  </Context.Consumer>
-)
+  `
+
+  return(
+    <Context.Consumer>
+      {
+        ({ activateAuth }) => { 
+          return(
+            <>
+              { register
+                ? <RegisterMutation>
+                    { 
+                      (register, { data, loading, error }) => { 
+                        const onSubmit = ({ email, password }) => {
+                          const input = { email, password } 
+                          const variables = { input }
+                          register({ variables }).then(activateAuth)
+                        }
+
+                        const errorMsg = error && 'Ocurrió un error.'
+
+                        return (
+                          <>
+                            <UserForm onSubmit={onSubmit} disabled={loading} error={errorMsg} title="Registrarse" />
+                            <Text>¿Tienes cuenta? <span role="button" onClick={() => setRegister(false)}>Inicia Sesión</span></Text>
+                          </>
+                        )
+                      }
+                    }
+                  </RegisterMutation>
+
+                : <LoginMutation>
+                    { 
+                      (login, { data, loading, error }) => { 
+                        const onSubmit = ({ email, password }) => {
+                          const input = { email, password } 
+                          const variables = { input }
+                          login({ variables }).then(activateAuth)
+                        }
+
+                        const errorMsg = error && 'Ocurrió un error.'
+
+                        return (
+                          <>
+                            <UserForm onSubmit={onSubmit} disabled={loading} error={errorMsg} title="Iniciar Sesión" />
+                            <Text>¿No tienes cuenta? <span role="button" onClick={() => setRegister(true)}>¡Registrate!</span></Text>
+                          </>
+                        )
+                      }
+                    }
+                  </LoginMutation>
+              }
+            </>
+          )
+        } 
+      }
+    </Context.Consumer>
+  )
+}
