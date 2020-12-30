@@ -1,6 +1,7 @@
 import React from 'react'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Form, Input, Button, Title, ErrorMsg } from './styles'
+import { MdPets } from 'react-icons/md'
 
 export const UserForm = ({ onSubmit, title, error, disabled }) => { 
   const email = useInputValue('')
@@ -33,7 +34,7 @@ export const UserForm = ({ onSubmit, title, error, disabled }) => {
         />
         <Button disabled={disabled}>{title}</Button>
       </Form>
-      {error && <ErrorMsg>{error}</ErrorMsg>}
+      {error && <ErrorMsg><MdPets />&nbsp;{error}</ErrorMsg>}
     </>
   )
 }
