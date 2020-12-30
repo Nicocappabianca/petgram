@@ -6,7 +6,7 @@ import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 
 export const NotRegisteredUser = () => {
-  const [register, setRegister] = useState(true); 
+  const [register, setRegister] = useState(true)
 
   const Text = styled.p`
     text-align: center; 
@@ -32,7 +32,10 @@ export const NotRegisteredUser = () => {
                         const onSubmit = ({ email, password }) => {
                           const input = { email, password } 
                           const variables = { input }
-                          register({ variables }).then(activateAuth)
+                          register({ variables }).then(({data}) => { 
+                            const { signup } = data; 
+                            activateAuth(signup)
+                          })
                         }
 
                         const errorMsg = error && 'Ocurrió un error.'
@@ -53,7 +56,10 @@ export const NotRegisteredUser = () => {
                         const onSubmit = ({ email, password }) => {
                           const input = { email, password } 
                           const variables = { input }
-                          login({ variables }).then(activateAuth)
+                          login({ variables }).then(({data}) => { 
+                            const { login } = data; 
+                            activateAuth(login)
+                          })
                         }
 
                         const errorMsg = error && 'Ocurrió un error.'
