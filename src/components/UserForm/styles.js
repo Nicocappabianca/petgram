@@ -21,26 +21,6 @@ export const Input = styled.input`
   }
 `
 
-export const Button = styled.button`
-  background: #8d00ff;
-  border-radius: 3px; 
-  color: #fff; 
-  height: 32px; 
-  display: block; 
-  width: 100%; 
-  text-align: center;
-  cursor: pointer; 
-  transition: .3s; 
-
-  &:hover { 
-    background: #6E00C5; 
-  }
-
-  &[disabled] { 
-    opacity: .3; 
-  }
-`
-
 export const Title = styled.h2`
   font-size: 16px; 
   font-weight: 500;
