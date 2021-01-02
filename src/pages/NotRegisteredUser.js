@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import { Context } from '../Context'
 import { UserForm } from '../components/UserForm'
+import { Layout } from '../components/Layout'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 
@@ -21,7 +22,7 @@ export const NotRegisteredUser = () => {
   `
 
   return(
-    <>
+    <Layout title={ register ? 'Registrarse' : 'Iniciar sesión'} description={`${ register ? 'Registrate' : 'Inicia sesión'} en Petgram!`}>
       { register
         ? <RegisterMutation>
             { 
@@ -71,6 +72,6 @@ export const NotRegisteredUser = () => {
             }
           </LoginMutation>
       }
-    </>
+    </Layout>
   )
 }

@@ -26,9 +26,3 @@ export const Image = styled.img`
   width: 100%; 
   position: absolute; 
 `
-
-export const Title = styled.h1`
-  font-size: 20px; 
-  color: #444;
-  text-align: center;  
-`

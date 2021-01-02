@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { SubmitButton } from '../components/SubmitButton'
+import { Layout } from '../components/Layout'
 import styled from 'styled-components'
 
 export const User = () => {
@@ -19,9 +20,11 @@ export const User = () => {
   `
 
   return (
-    <Container>
-      <Title>Perfil de usuario</Title>
-      <SubmitButton onClick={removeAuth}>Cerrar sesión</SubmitButton>
-    </Container>
+    <Layout title="Perfil" description="Desde aquí puedes cerrar sesión">
+      <Container>
+        <Title>Perfil de usuario</Title>
+        <SubmitButton onClick={removeAuth}>Cerrar sesión</SubmitButton>
+      </Container>
+    </Layout>
   )
 }

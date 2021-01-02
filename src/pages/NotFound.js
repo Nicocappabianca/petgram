@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Layout } from '../components/Layout'
 
 export const NotFound = () => {
   const Title = styled.h1`
@@ -16,6 +17,8 @@ export const NotFound = () => {
   `
 
   return(
-    <Title>¡Esta página no existe! <span>😰</span></Title>
+    <Layout title="Error 404" description="La página que buscas no existe">
+      <Title>¡Esta página no existe! <span>😰</span></Title>
+    </Layout>
   )  
 }
