@@ -7,5 +7,6 @@ export const Button = styled.button`
     margin-bottom: 8px; 
     & svg{
         margin-right: 4px; 
+        cursor: pointer;
     }
 `
