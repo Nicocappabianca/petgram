@@ -22,7 +22,10 @@ export const NotRegisteredUser = () => {
   `
 
   return(
-    <Layout title={ register ? 'Registrarse' : 'Iniciar sesión'} description={`${ register ? 'Registrate' : 'Inicia sesión'} en Petgram!`}>
+    <Layout 
+      title={ register ? 'Registrarse' : 'Iniciar sesión'} 
+      description={`${ register ? 'Registrate' : 'Inicia sesión'} en Petgram!`}
+    >
       { register
         ? <RegisterMutation>
             { 
