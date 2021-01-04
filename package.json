@@ -4,6 +4,8 @@
   "description": "Project from advanced React.js course",
   "main": "index.js",
   "scripts": {
+    
+    "serve:dev": "webpack --mode 'development' && npx serve dist -s", 
     "vercel-build": "npm run build",
     "build": "webpack",
     "lint": "standard",
