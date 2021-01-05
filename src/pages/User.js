@@ -4,7 +4,7 @@ import { SubmitButton } from '../components/SubmitButton'
 import { Layout } from '../components/Layout'
 import styled from 'styled-components'
 
-export const User = () => {
+export default () => {
   const { removeAuth } = useContext(Context)
 
   const Container = styled.div`

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
 
-export const NotFound = () => {
+export default () => {
   const Title = styled.h1`
     color: #444; 
     font-size: 20px; 

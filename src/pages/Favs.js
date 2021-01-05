@@ -3,7 +3,7 @@ import { FavsWithQuery } from '../container/GetFavorites'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
 
-export const Favs = () => {
+export default () => {
   const Title = styled.h1`
     font-size: 20px; 
     color: #444;
