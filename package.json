@@ -1,7 +1,7 @@
 {
   "name": "petgram",
   "version": "1.0.0",
-  "description": "Project from advanced React.js course",
+  "description": "project from advanced React.js course",
   "main": "index.js",
   "scripts": {
     "serve:dev": "webpack --mode 'development' && npx serve dist -s",
