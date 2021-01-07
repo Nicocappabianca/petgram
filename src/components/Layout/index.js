@@ -8,6 +8,7 @@ export const Layout = ({ children, title, description }) => {
       <Helmet>
         { title && <title>Petgram | {title}</title> }
         { description && <meta name="description" content={description} /> }
+        <link rel="icon" href="../assets/icon.png"/>
       </Helmet>
       <div>
         {children}
